@@ -1,0 +1,21 @@
+zabbix_export:
+  version: '6.0'
+  date: '2024-01-11T12:07:54Z'
+  groups:
+    - uuid: a571c0d144b14fd4a87a9d9b2aa9fcd6
+      name: Templates/Applications
+  templates:
+    - uuid: 0a325ce00f9f46aa8ab9d3d51724afef
+      template: 'LSYNCD Service Availability'
+      name: 'LSYNCD Service Availability'
+      groups:
+        - name: Templates/Applications
+      items:
+        - uuid: c4673aa334b247d1bd5e4ba5efecf173
+          name: 'LSYNCD Service Availability'
+          key: lsyncd_check
+          triggers:
+            - uuid: 65ee437a9d1f4987ac80334ffc03382d
+              expression: 'last(/LSYNCD Service Availability/lsyncd_check)=0'
+              name: 'LSYNCD Service is down on {HOST.NAME}!'
+              priority: HIGH
